@@ -1,0 +1,65 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+#[Bb]uild - commented out since FMOD has required folder with this name
+/[Bb]uilds/
+/[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+/Assets/AssetStoreTools*
+*.apk
+*.unitypackage
+/Assets/mcs.rsp*
+/Assets/csc.rsp*
+/Assets/Plugins/Personal*
+/[Uu]serSettings/
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+*.pidb.meta
+/*.suo
+/*.sln
+/*.user
+/*.unityproj
+/*.booproj
+.consulo/
+/*.tmp
+/*.svd
+
+# =============== #
+# Rider files #
+# =============== #
+.idea/
+/Assets/Plugins/Editor/JetBrains*
+/*sln.DotSettings.user
+
+# ============== #
+# FMOD generated #
+# ============== #
+/Assets/**/FMODStudioCache.asset
+/Assets/**/FMODStudioCache.asset.meta
+fmod.log
+fmod_editor.log
+
+# ==================================== #
+# FMOD Studio (in folder "FMOD Project") #
+# ==================================== #
+/FMOD Project/**/.user/
+/FMOD Project/**/.unsaved/
+/FMOD Project/**/.cache/
+/FMOD Project/**/.restore/
+
+# ==================================== #
+# xUnit Tests") #
+# ==================================== #
+/xUnitTests/packages
+/xUnitTests/xUnitTests/bin
+/xUnitTests/xUnitTests/obj
