@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{56318c41-2d48-4a57-afd3-11bbb7d63969}">
+		<property name="assetPath">
+			<value>26777__junggle__btn402.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.18285714285714286</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{133281bd-b529-4252-8378-09662c976ed6}</destination>
+		</relationship>
+	</object>
+</objects>

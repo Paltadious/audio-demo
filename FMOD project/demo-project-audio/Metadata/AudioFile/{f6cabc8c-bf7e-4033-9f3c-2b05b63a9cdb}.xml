@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f6cabc8c-bf7e-4033-9f3c-2b05b63a9cdb}">
+		<property name="assetPath">
+			<value>171697__nenadsimic__menu-selection-click.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.22768707482993197</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{133281bd-b529-4252-8378-09662c976ed6}</destination>
+		</relationship>
+	</object>
+</objects>

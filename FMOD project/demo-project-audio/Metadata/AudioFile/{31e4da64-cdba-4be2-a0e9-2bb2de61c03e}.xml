@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{31e4da64-cdba-4be2-a0e9-2bb2de61c03e}">
+		<property name="assetPath">
+			<value>80921__justinbw__buttonchime02up.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2880045351473921</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{133281bd-b529-4252-8378-09662c976ed6}</destination>
+		</relationship>
+	</object>
+</objects>
