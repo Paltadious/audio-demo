@@ -1,3 +1,4 @@
+using Core.Audios;
 using Core.Chains;
 using Project.Games;
 
@@ -16,6 +17,8 @@ namespace Project.Apps
                 return;
 
             Chain.CreateAndRun(
+                new ActionStep(Audio.Instance.Initialize),
+                new ActionStep(Audio.Instance.OnAppInited),
                 new ActionStep(Game.Initialize)
                 );
         }

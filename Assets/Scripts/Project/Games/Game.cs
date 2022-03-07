@@ -10,7 +10,6 @@ namespace Project.Games
     {
         public static void Initialize()
         {
-            Debug.Log("Hi!");
         }
     }
 }
