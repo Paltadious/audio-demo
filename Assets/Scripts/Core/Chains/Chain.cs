@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Core.Chains
@@ -12,8 +13,8 @@ namespace Core.Chains
     {
         public ProcessArgs ProcessArgs { get; private set; }
 
-        public LinkedList<Step> Steps { get; }
-        public Step CurrentStep => Steps.Count == 0 || !IsStarted ? null : Steps.First.Value;
+        public LinkedList<IStep> Steps { get; }
+        public IStep CurrentStep => Steps.Count == 0 || !IsStarted ? null : Steps.First.Value;
 
         /// <summary>
         /// Is fired on every possible completion of steps like Finish(), Interrupt() or Reset().
@@ -29,9 +30,16 @@ namespace Core.Chains
         public bool IsPaused { get; private set; }
         bool isNotFinalizeStep;
 
-        public Chain(params Step[] steps)
+        public Chain(params IStep[] steps)
         {
-            Steps = new LinkedList<Step>(steps);
+            Steps = new LinkedList<IStep>(steps);
+        }
+
+        public static void CreateAndRun(params IStep[] steps)
+        {
+            Chain chain = new Chain();
+            chain.Push(steps);
+            chain.Start();
         }
 
         /// <summary>
@@ -52,7 +60,7 @@ namespace Core.Chains
 
             CurrentStep.Enter(this);
         }
-        
+
         /// <summary>
         /// Pause chain. it can be resumed later.
         /// </summary>
@@ -66,7 +74,8 @@ namespace Core.Chains
 
             IsPaused = true;
 
-            CurrentStep.Pause();
+            Debug.Assert(CurrentStep is IProcessStep);
+            ((IProcessStep) CurrentStep).Pause();
         }
 
         /// <summary>
@@ -93,20 +102,24 @@ namespace Core.Chains
             if (TryFinish())
                 return;
 
-            CurrentStep.Interrupt();
+            Debug.Assert(CurrentStep is IProcessStep);
+            ((IProcessStep) CurrentStep).Interrupt();
         }
-        
-          /// <summary>
+
+        /// <summary>
         /// Sets step in first position in execution order.
         /// If sequence was already started:
         ///     1) pauses current step;
         ///     2) adds new step;
         ///     3) enters first step.  
         /// </summary>
-        public void Push(Step step)
+        public void Push(IStep step)
         {
             if (IsStarted)
-                CurrentStep.Pause();
+            {
+                Debug.Assert(CurrentStep is IProcessStep);
+                ((IProcessStep) CurrentStep).Pause();
+            }
 
             Steps.AddFirst(step);
 
@@ -121,10 +134,13 @@ namespace Core.Chains
         ///     2) adds new steps;
         ///     3) enters first step.  
         /// </summary>
-        public void Push(params Step[] steps)
+        public void Push(params IStep[] steps)
         {
             if (IsStarted)
-                CurrentStep.Pause();
+            {
+                Debug.Assert(CurrentStep is IProcessStep);
+                ((IProcessStep) CurrentStep).Pause();
+            }
 
             for (int i = steps.Length - 1; i >= 0; i--)
             {
@@ -138,15 +154,15 @@ namespace Core.Chains
         /// <summary>
         /// Finishes first step in chain and sets new one instead.
         /// </summary>
-        public void Replace(Step step)
+        public void Replace(IStep step)
         {
             if (IsStarted)
             {
                 Debug.Assert(!isNotFinalizeStep);
+                Debug.Assert(CurrentStep is IProcessStep);
+
                 isNotFinalizeStep = true;
-
-                CurrentStep.Finish();
-
+                ((IProcessStep) CurrentStep).Finish();
                 isNotFinalizeStep = false;
             }
 
@@ -161,15 +177,15 @@ namespace Core.Chains
         /// <summary>
         /// Finishes first step in chain and sets new ones instead.
         /// </summary>
-        public void Replace(Step[] steps)
+        public void Replace(IStep[] steps)
         {
             if (IsStarted)
             {
                 Debug.Assert(!isNotFinalizeStep);
+                Debug.Assert(CurrentStep is IProcessStep);
+
                 isNotFinalizeStep = true;
-
-                CurrentStep.Finish();
-
+                ((IProcessStep) CurrentStep).Finish();
                 isNotFinalizeStep = false;
             }
 
@@ -187,7 +203,7 @@ namespace Core.Chains
         /// <summary>
         /// Sets new step after first step.
         /// </summary>
-        public void SetNext(Step step)
+        public void SetNext(IStep step)
         {
             if (Steps.Count > 0)
                 Steps.AddAfter(Steps.First, step);
@@ -198,7 +214,7 @@ namespace Core.Chains
         /// <summary>
         /// Sets new steps after first step.
         /// </summary>
-        public void SetNext(Step[] steps)
+        public void SetNext(IStep[] steps)
         {
             if (Steps.Count > 0)
             {
@@ -217,7 +233,7 @@ namespace Core.Chains
         }
 
         // Step successfully finished itself and returns control to the chain 
-        public void StepFinished(Step step)
+        public void StepFinished(IStep step)
         {
             CheckStepCompletionCorrectness(step);
 
@@ -234,7 +250,7 @@ namespace Core.Chains
         }
 
         // Step is interrupted and urgently finishes the chain
-        public void StepInterrupted(Step step, ProcessArgs args = null)
+        public void StepInterrupted(IStep step, ProcessArgs args = null)
         {
             CheckStepCompletionCorrectness(step);
 
@@ -255,7 +271,7 @@ namespace Core.Chains
             Finish();
         }
 
-        void CheckStepCompletionCorrectness(Step step)
+        void CheckStepCompletionCorrectness(IStep step)
         {
             if (step != CurrentStep)
             {
@@ -282,12 +298,12 @@ namespace Core.Chains
             IsFinished = true;
 
 #if UNITY_EDITOR
-            foreach (Step step in Steps)
+            foreach (var step in Steps.OfType<ProcessStep>())
             {
                 Debug.Assert(!step.IsEntered, $"{step} was not exited when chain is finishing.");
             }
 #endif
-            
+
             Steps.Clear();
             OnBeforeStepsCompleted?.Invoke(ProcessArgs);
             OnStepsCompleted?.Invoke(ProcessArgs);

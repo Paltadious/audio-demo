@@ -2,19 +2,19 @@ using System;
 
 namespace Core.Chains
 {
-    public class ActionStep : Step
+    public class ActionStep : InstantStep
     {
-        readonly Action actions;
+        readonly Action action;
 
-        public ActionStep(Action actions)
+        public ActionStep(Action action)
         {
-            this.actions = actions;
+            this.action = action;
         }
-
-        protected override void OnEnter()
+        
+        public override void Enter(Chain chain)
         {
-            actions.Invoke();
-            Finish();
+            action.Invoke();
+            chain.StepFinished(this);
         }
     }
 }

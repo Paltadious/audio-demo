@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Core.Chains
 {
-    public abstract class Step
+    public abstract class ProcessStep : IProcessStep
     {
         public bool IsEntered;
 
