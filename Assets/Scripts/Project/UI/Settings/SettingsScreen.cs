@@ -1,12 +1,13 @@
 using Core.Audios;
 using Core.UI.Elements;
-using FMOD.Studio;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Project.UI
 {
+    // This demo project doesn't aim to show any UI system implementation, so SettingsScreen is implemented quite simple
+    // and isn't instanciated from code. It is simply placed on the scene.
     public class SettingsScreen : MonoBehaviour
     {
         public OnOffButton musicButton;
