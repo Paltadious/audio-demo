@@ -8,11 +8,10 @@ namespace Core.Audios
         
         //UI
         ButtonClick = 100,
-        RadioButtonClick,
-        WindowOpen,
-        WindowClose,
+        TestSound,
+        TestSound2,
         
         //World
-        DefaultWorldSound = 200
+        // DefaultWorldSound = 200
     }
 }

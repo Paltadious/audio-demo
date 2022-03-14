@@ -55,12 +55,20 @@ MonoBehaviour:
     soundType: 1
   - eventRef:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    soundType: 0
+        Data1: 1171941124
+        Data2: 1262211080
+        Data3: 2054003127
+        Data4: -249267818
+      Path: event:/reward_1
+    soundType: 101
+  - eventRef:
+      Guid:
+        Data1: -1771463232
+        Data2: 1214556904
+        Data3: -606892887
+        Data4: 1146589765
+      Path: event:/button_1
+    soundType: 102
 --- !u!114 &6534677423937465435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,5 +81,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 869228712514838400}
   ListenerNumber: -1

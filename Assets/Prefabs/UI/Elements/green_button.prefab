@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3814838870911482322}
   - component: {fileID: 2339934095411293962}
-  - component: {fileID: 197529739895791046}
+  - component: {fileID: 63870017262743821}
   m_Layer: 5
   m_Name: green_button
   m_TagString: Untagged
@@ -47,7 +47,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551698094128065929}
   m_CullTransparentMesh: 0
---- !u!114 &197529739895791046
+--- !u!114 &63870017262743821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3551698094128065929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 2577e5bd2c2f4b738051a43bac22c1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  transitionHandlers: []
 --- !u!1 &6080104008806051148
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pay respect
+  m_text: Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e967efcfe3d8aa04db4fbb989f6c2b4d, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: bb94b2ca1d80d7e47b37357c93a607ce, type: 2}
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.7
+  m_fontSize: 37
   m_fontSizeBase: 37
   m_fontWeight: 400
   m_enableAutoSizing: 1

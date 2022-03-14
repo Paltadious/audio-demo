@@ -1,5 +1,6 @@
 using Core.Audios;
 using Core.Chains;
+using Project.Audios;
 using Project.Games;
 
 namespace Project.Apps
@@ -18,7 +19,7 @@ namespace Project.Apps
 
             Chain.CreateAndRun(
                 new ActionStep(Audio.Instance.Initialize),
-                new ActionStep(Audio.Instance.OnAppInited),
+                new AudioStep(SoundType.MainMusicTheme),
                 new ActionStep(Game.Initialize)
                 );
         }
