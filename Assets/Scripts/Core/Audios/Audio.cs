@@ -225,12 +225,15 @@ namespace Core.Audios
 
         void FadeMusic(EVENT_CALLBACK_TYPE type, IntPtr _event, IntPtr parameters)
         {
-            if (!IsMusicEnabled || !IsSFXEnabled)
+            if (!IsMusicEnabled)
                 return;
-
+            
             switch (type)
             {
                 case EVENT_CALLBACK_TYPE.SOUND_PLAYED:
+                    if (!IsSFXEnabled)
+                        break;
+
                     // many calls from the same event can come in the same time,
                     // so to avoid duplicates add only unique events
                     if (!musicFadingEvents.Contains(_event))
@@ -271,7 +274,7 @@ namespace Core.Audios
         }
 
         //=============[ Helpers ]======================================================================================
-        
+
         [Button]
         void WhatIsNotHere()
         {

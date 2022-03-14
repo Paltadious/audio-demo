@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace Project.Ui.Elements
+namespace Core.UI.Elements
 {
-    public abstract class TransitionHandler : MonoBehaviour
+    public class TransitionHandler : MonoBehaviour
     {
-        public abstract void OnNormal();
-        public abstract void OnPressed();
-        public abstract void OnDisabled();
+        public virtual void OnNormal(){}
+        public virtual void OnPressed(){}
+        public virtual void OnDisabled(){}
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project.Ui.Elements
+namespace Core.UI.Elements
 {
     public class SpriteSwapTransition : TransitionHandler
     {

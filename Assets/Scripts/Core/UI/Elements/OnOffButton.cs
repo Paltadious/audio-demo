@@ -1,10 +1,9 @@
-using Project.Ui.Elements;
 using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project.UI.Elements
+namespace Core.UI.Elements
 {
     public class OnOffButton : MonoBehaviour
     {

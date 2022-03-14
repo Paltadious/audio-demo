@@ -1,6 +1,6 @@
 using Core.Audios;
+using Core.UI.Elements;
 using FMOD.Studio;
-using Project.UI.Elements;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
