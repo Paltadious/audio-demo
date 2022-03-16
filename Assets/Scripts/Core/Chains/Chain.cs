@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Core.Chains
 {
     /// <summary>
-    /// Easy manageble sequence of steps.
+    /// Easy manageable sequence of steps.
     /// </summary>
     /// <remarks>Chain could also be managed from inside of its steps.</remarks>
     public class Chain
